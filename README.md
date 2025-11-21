@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Blog-de-recetas
 TPE Web 2 - Blog de recetas
 
@@ -65,3 +66,6 @@ Dejamos aclarado que por una pequeña confusión la alumna (B) realizó la parte
 
 ## Diagrama Entidad-Relación (DER)
 ![DER-Saganea-Ribas](DER-Saganea-Ribas.png)
+=======
+# Blog-de-recetas---API-REST
+>>>>>>> 165566c8aa80daa7493deef90d77bfa025643e27
