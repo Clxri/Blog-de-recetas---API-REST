@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Blog-de-recetas
 TPE Web 2 - Blog de recetas
 
@@ -14,58 +13,107 @@ Recetario online
 ## Breve introducción
 Nuestro sitio web consiste en un recetario destinado a la publicación de recetas culinarias donde los usuarios pueden subir sus propias recetas con instrucciones e imágenes. La base de datos posee relación 1 a N: Cada usuario puede publicar varias recetas y cada receta pertenece a un único usuario, quien es su autor registrado.
 
-# Blog-de-recetas (Segunda parte)
+# Blog-de-recetas (Tercera parte API REST)
+Este trabajo consiste en el desarrollo de una API REST para gestionar un sistema de recetas y usuarios.
+La API permite:
 
-## Configuración de la base de datos
+Listar, crear, editar y eliminar recetas.
 
-1. Abrí phpMyAdmin en tu navegador.
-2. Crea una nueva base de datos llamada recetario.
-3. Selecciona la base de datos recién creada.
-4. Hace clic en la pestaña Importar.
-5. Presiona Seleccionar archivo y elegí el archivo recetario.sql incluido en este proyecto.
-6. Hace clic en Continuar para importar las tablas y los datos.
-7. La base de datos incluye las tablas users, recipes y admin
+Listar, crear, editar y eliminar usuarios.
 
-## Puesta en marcha del sitio
+Filtrar y ordenar los listados.
 
-1. Copia todos los archivos del proyecto dentro de la carpeta htdocs.
-2. Inicia Apache y MySQL desde XAMPP o similar
-3. Abrí el navegador y accedé a la URL del proyecto
-4. El sistema se conectará automáticamente a la base de datos configurada.
+Usar Postman para interactuar con los endpoints.
 
-## Acceso a la página
+## ENDPOINTS USUARIOS
+__GET__ : /api/usuarios
 
-Usuario administrador:
-Usuario: webadmin
-Contraseña: admin
+Lista todos los usuarios. Los campos válidos son:
 
-Para ingresar como administrador:
-1. Ir a la sección “Login” desde el menú principal.
-2. Iniciar sesión con los datos anteriores.
+id_user
 
-Público general:
+name
 
-Ver el listado de todas las recetas disponibles.
-Consultar los detalles de cada usuario y sus recetas.
-Añadir tanto usuarios como recetas a usuarios
+email
 
-Administrador:
+description
 
-Editar o eliminar recetas.
-Editar o eliminar usuarios.
-Iniciar y cerrar sesión.
-Protección de rutas para evitar el acceso sin autenticación.
+age
 
-## Estructura de la base de datos
+Permite ordenamiento: /api/usuarios?orderBy=name&order=desc
 
-usuarios: guarda la información de los usuarios del sistema.
-recetas: contiene los datos de cada receta publicada.
+__GET__ : /api/usuarios/:ID
 
-## Aclaración
-Dejamos aclarado que por una pequeña confusión la alumna (B) realizó la parte (A) y viceversa
+Trae un usuario en específico
 
-## Diagrama Entidad-Relación (DER)
-![DER-Saganea-Ribas](DER-Saganea-Ribas.png)
-=======
-# Blog-de-recetas---API-REST
->>>>>>> 165566c8aa80daa7493deef90d77bfa025643e27
+__POST__ : /api/usuarios
+
+Crea un usuario.
+
+Ejemplo:
+
+{
+    "name": "Carla",
+    "email": "carla@gmail.com",
+    "description": "Fan de la pastelería",
+    "age": 25
+}
+
+__PUT__ : /api/usuarios/:ID
+
+Edita un usuario
+
+__DELETE__ : /api/usuarios/:ID
+
+Elimina un usuario
+
+## ENDPOINTS RECETAS
+__GET__ : /api/recetas
+
+Lista todas las recetas. Los campos válidos son:
+
+id_recipe
+
+id_user
+
+title
+
+content
+
+time
+
+date
+
+img
+
+Permite ordenamiento: /api/recetas?orderBy=time&order=asc
+
+Y filtrado por usuario: /api/recetas?user=13
+
+__GET__ : /api/recetas/:ID
+
+Devuelve la receta con ese ID
+
+__POST__ : /api/recetas
+
+Crea una nueva receta.
+
+Ejemplo:
+
+{
+    "title": "Tarta de verdura",
+    "content": "Mezclar todo y hornear",
+    "time": 45,
+    "date": "2025-10-15",
+    "id_user": 8,
+    "img": "https://imagen.com/tarta.jpg"
+}
+
+
+__PUT__ : /api/recetas/:ID
+
+Modifica una receta existente.
+
+__DELETE__ : /api/usuarios/:ID
+
+Elimina la receta indicada
